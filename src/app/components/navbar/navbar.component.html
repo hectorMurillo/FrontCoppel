@@ -1,0 +1,75 @@
+<mat-toolbar color="primary">
+  <a
+    [routerLink]="'/'"
+    mat-icon-button
+    class="example-icon"
+    arial-label="Example icon-button with menu icon"
+  >
+    <mat-icon>store</mat-icon>
+  </a>
+  <span>Portal de pólizas</span>  
+  <div *ngIf = "isLoggedIn">
+      &nbsp;
+      |
+      <button mat-button [routerLink]="'/polizas'">
+        Pólizas
+      </button>  
+      |  
+      &nbsp;  
+      <button mat-button>
+        Inventarios
+      </button>  
+      |
+      &nbsp;  
+      <button mat-button>
+        Empleados
+      </button>  
+      |
+  </div>
+  <!-- <div class="example-button-row">
+    <button mat-stroked-button color="primary">Pólizas</button>
+  </div> -->
+  <span class="example-spacer"></span>
+  <a
+    *ngIf = "!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class = "example-icon favorite-icon"
+    aria-label = "Example icon-button with heart icon"
+  >
+    Iniciar sesión
+  </a>
+  <a
+    *ngIf = "!isLoggedIn"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon favorite-icon mr20 ml70"
+    aria-label="Example icon-button with heart icon"
+  >
+    Registrar
+  </a>
+  <!-- <a
+    *ngIf = "isLoggedIn"
+    (click) = "logout()"
+    style="margin-right: 50px"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    Cerrar sesión
+  </a> -->  
+  <button *ngIf = "isLoggedIn && user" mat-button [matMenuTriggerFor]="menu" >{{ user.nombre }} {{ user.apellido }} </button>  
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngIf = "isLoggedIn" (click) = "logout()">Cerrar Sesión</button>
+    <!-- <button mat-menu-item>Item 2</button> -->
+  </mat-menu>
+  <!-- <button
+    *ngIf = "isLoggedIn && user"
+    mat-button
+    style="margin-right: 10px"
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    {{ user.username }}
+  </button> -->
+</mat-toolbar>

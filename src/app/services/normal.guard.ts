@@ -1,0 +1,28 @@
+import { LoginService } from './login.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree , Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NormalGuard implements CanActivate {
+
+  constructor(private loginService:LoginService,private router:Router){
+
+  }
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      // if(this.loginService.isLoggedIn() && this.loginService.getUserRole() == 'NORMAL'){
+        if(this.loginService.isLoggedIn()){
+        //ERRONEO SOLO PARA SALTAR LOS ROLES
+        return false;
+      }
+
+      this.router.navigate(['login']);
+      return false;
+  }
+
+}

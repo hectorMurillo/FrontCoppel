@@ -1,0 +1,28 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .center {
+    margin: auto;
+    width: 75%;
+    /* border: 3px solid green; */
+    padding: 10px;
+  }
+  .button-row{
+    display: table-cell;
+    width:490px;
+  }
+
+  table {
+    text-align: center !important;
+    width: 100%;
+  }
+  
+  .mat-header-cell {
+    text-align: center;
+  }

@@ -1,0 +1,73 @@
+<div class="bootstrap-wrapper">
+    <div class="container">        
+        <h1>Pólizas</h1>
+        <mat-divider>
+
+        </mat-divider>
+        <div class="row center text-center">                            
+            <!-- <mat-form-field>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-label>Filtro</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Poliza" #input>
+                    </div>                                                
+                </div>                    
+            </mat-form-field> -->            
+            <button mat-mini-fab color="primary" >
+                <mat-icon matTooltip="Poliza nueva" [routerLink]="['/','create']">add</mat-icon>
+            </button>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">                                
+                <!-- Position Column -->                
+                <ng-container matColumnDef="idPoliza">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.idPoliza}} </td>
+                </ng-container>
+                            
+                <ng-container matColumnDef="empleadoGenero">
+                    <th mat-header-cell *matHeaderCellDef> Generó </th>
+                    <td mat-cell *matCellDef="let element"> {{element.empleadoGenero.nombre}} </td>
+                </ng-container>
+                  
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> fecha </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fecha | date}} </td>
+                </ng-container>
+                            
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef> cantidad </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sku">
+                    <th mat-header-cell *matHeaderCellDef> sku </th>
+                    <td mat-cell *matCellDef="let element"> {{element.sku.sku}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="button-row">
+                            <button mat-icon-button matTooltip="Editar poliza-{{element.idPoliza}}" [routerLink]="['/','edit',element.idPoliza]" color="primary" >
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Eliminar poliza-{{element.idPoliza}}" color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            
+                        </div>
+
+                    </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No hay datos</td>
+                </tr>
+            </table>                                        
+        </div>                
+    </div>
+</div>
+                

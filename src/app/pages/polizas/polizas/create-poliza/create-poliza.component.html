@@ -1,0 +1,32 @@
+<div class="text-center">
+    <div class="spacer">
+        <h4><span *ngIf="id < 1">Registrar</span> <span *ngIf="id > 0">Actualizar</span> Poliza</h4>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Seleccione Producto</mat-label>
+            <mat-select [(value)]="data.sku" #product>
+                <mat-option *ngFor="let product of products" [value]="product.value">
+                    <strong>
+                        {{ product.value }}
+                    </strong> - {{ product.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="spacer">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Cantidad</mat-label>
+                <input type="number" [value]="data.cantidad"  matInput placeholder="Cantidad" #cantidad min="0">
+            </mat-form-field>
+        </div>
+        <div class="spacer">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input type="text" [value]="data.cliente | titlecase" matInput placeholder="Cliente" #cliente>
+            </mat-form-field>
+        </div>
+        <div class="spacer">
+            <button  mat-raised-button color="primary" (click)="guardar({'product':product.value,'cantidad':cantidad.value,'cliente':cliente.value})">
+                Guardar
+            </button>
+        </div>
+    </div>
+</div>
